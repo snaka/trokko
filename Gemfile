@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in rails_on_docker_starter.gemspec
+# Specify your gem's dependencies in railyard.gemspec
 gemspec
 
 gem 'rake', '~> 13.0'
@@ -10,3 +10,7 @@ gem 'rake', '~> 13.0'
 gem 'rspec', '~> 3.0'
 
 gem 'rubocop', '~> 1.21'
+gem 'rubocop-rake', '~> 0.6'
+gem 'rubocop-rspec', '~> 2.11'
+
+gem 'debug', '~> 1.0'

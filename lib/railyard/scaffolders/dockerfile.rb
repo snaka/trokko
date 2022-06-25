@@ -1,22 +1,21 @@
 # frozen_string_literal: true
 
-module RailsOnDockerStarter
+module Railyard
   module Scaffolders
     # Generating Dockerfile according to configurations
     class Dockerfile
-      def initialize(config = {})
-        @config = config
-      end
+      attr_reader :ruby_version, :db
 
-      def ruby_version
-        @config[:ruby_version] || '3.1'
+      def initialize(ruby_version:, db:)
+        @ruby_version = ruby_version
+        @db = db
       end
 
       def generate
         <<~DOCKERFILE
           FROM ruby:#{ruby_version}
 
-          RUN apt-get update -qq && apt-get install -y build-essential libpq-dev
+          RUN apt-get update -qq && apt-get install -y build-essential #{db_dependencies}
           RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
             apt-get install -y nodejs
           RUN mkdir /app
@@ -33,6 +32,17 @@ module RailsOnDockerStarter
 
           CMD ["bundle", "exec", "rails", "server", "--binding", "0.0.0.0"]
         DOCKERFILE
+      end
+
+      private
+
+      def db_dependencies
+        case db
+        when 'mysql'
+          ''
+        when 'postgres'
+          'libpq-dev'
+        end
       end
     end
   end

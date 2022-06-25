@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'rails_on_docker_starter'
+require 'railyard'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

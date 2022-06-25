@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative 'lib/rails_on_docker_starter/version'
+require_relative 'lib/railyard/version'
 
 Gem::Specification.new do |spec|
-  spec.name = 'rails_on_docker_starter'
-  spec.version = RailsOnDockerStarter::VERSION
+  spec.name = 'railyard'
+  spec.version = Railyard::VERSION
   spec.authors = ['S.Nakamatsu']
   spec.email = ['19329+snaka@users.noreply.github.com']
 
@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description = <<~DESCRIPTION
     This Gem provides commands to create a Rails project template for developing Rails projects in Docker.
   DESCRIPTION
-  spec.homepage = 'https://github.com/snaka/rails_on_docker_starter'
+  spec.homepage = 'https://github.com/snaka/railyard'
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 3.1.0'
 
@@ -33,8 +33,7 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  # Uncomment to register a new dependency of your gem
-  # spec.add_dependency "example-gem", "~> 1.0"
+  spec.add_runtime_dependency 'thor', '~>1.2.0'
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html

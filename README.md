@@ -1,6 +1,6 @@
-# RailsOnDockerStarter
+# Railyard
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rails_on_docker_starter`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/railyard`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 TODO: Delete this and the text above, and describe your gem
 
@@ -8,11 +8,11 @@ TODO: Delete this and the text above, and describe your gem
 
 Install the gem and add to the application's Gemfile by executing:
 
-    $ bundle add rails_on_docker_starter
+    $ bundle add railyard
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
-    $ gem install rails_on_docker_starter
+    $ gem install railyard
 
 ## Usage
 
@@ -26,7 +26,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rails_on_docker_starter.
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/railyard.
 
 ## License
 

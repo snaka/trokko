@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module RailsOnDockerStarter
+module Railyard
   module Scaffolders
     # Generating entrypoint.sh file according to configurations
     class Entrypoint

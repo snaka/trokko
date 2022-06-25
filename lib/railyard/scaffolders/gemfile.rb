@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module RailsOnDockerStarter
+module Railyard
   module Scaffolders
     # Generationg Gemfile according to configurations
     class Gemfile
