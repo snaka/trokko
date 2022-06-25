@@ -1,16 +1,14 @@
 # frozen_string_literal: true
 
-module RailsOnDockerStarter
+module Railyard
   module Scaffolders
     module Config
       # Generating config/database.yml file according to configurations
       class Database
-        def initialize(config = {})
-          @config = config
-        end
+        attr_reader :db
 
-        def dbms
-          @config[:dbms] || :mysql
+        def initialize(db:)
+          @db = db
         end
 
         def generate
@@ -42,13 +40,13 @@ production:
 
         def db_config
           db_config =
-            case dbms
-            when :mysql
+            case db
+            when 'mysql'
               MySQLConfig.new
-            when :postgres
+            when 'postgres'
               PostgreSQLConfig.new
             else
-              raise "Specified DBMS is not supported : #{dbms}"
+              raise "Specified db is not supported : #{db}"
             end
           db_config.generate
         end
@@ -61,7 +59,7 @@ production:
   adapter: mysql2
   encoding: utf8
   username: root
-  password: <%= ENV["MYSQL_ROOT_PASSWORD"] %>
+  password: <%= ENV.fetch("MYSQL_ROOT_PASSWORD") %>
           DB_CONFIG
         end
       end

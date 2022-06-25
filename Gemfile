@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in rails_on_docker_starter.gemspec
+# Specify your gem's dependencies in railyard.gemspec
 gemspec
 
 gem 'rake', '~> 13.0'

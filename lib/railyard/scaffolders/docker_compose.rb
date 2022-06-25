@@ -1,15 +1,13 @@
 # frozen_string_literal: true
 
-module RailsOnDockerStarter
+module Railyard
   module Scaffolders
     # Generating docker-compose file according to configuration
     class DockerCompose
-      def initialize(config = {})
-        @config = config
-      end
+      attr_reader :db
 
-      def dbms
-        @config[:dbms] || :mysql
+      def initialize(db:)
+        @db = db
       end
 
       def generate
@@ -28,6 +26,7 @@ services:
       - "3000:3000"
     depends_on:
       - db
+#{app_service_config}
 volumes:
   database:
     driver: local
@@ -39,38 +38,52 @@ volumes:
 
       private
 
-      def db_service_config
-        db_service =
-          case dbms
-          when :mysql
+      def db_service
+        @db_service ||=
+          case db
+          when 'mysql'
             MySQLService.new
-          when :postgres
+          when 'postgres'
             PostgreSQLService.new
           else
-            raise "Specified DBMS is not supported : #{dbms}"
+            raise "Specified db is not supported : #{db}"
           end
-        db_service.generate
+      end
+
+      def db_service_config
+        db_service.db_service_config
+      end
+
+      def app_service_config
+        db_service.app_service_config
       end
 
       # MySQL configuration
       class MySQLService
-        def generate
+        def db_service_config
           <<-DB_SERVICE.chomp
     image: mysql:latest
     cap_add:
       - SYS_NICE
     environment:
-      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: &db_password secret
       TZ: Asia/Tokyo
     volumes:
       - database:/var/lib/mysql
           DB_SERVICE
         end
+
+        def app_service_config
+          <<-APP_SERVICE.chomp
+    environment:
+      MYSQL_ROOT_PASSWORD: *db_password
+          APP_SERVICE
+        end
       end
 
       # PostgreSQL configuration
       class PostgreSQLService
-        def generate
+        def db_service_config
           <<-DB_SERVICE.chomp
     image: postgres:latest
     environment:
@@ -79,6 +92,8 @@ volumes:
       - database:/var/lib/postgresql/data
           DB_SERVICE
         end
+
+        def app_service_config; end
       end
     end
   end
