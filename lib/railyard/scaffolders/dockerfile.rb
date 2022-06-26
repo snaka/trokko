@@ -16,8 +16,7 @@ module Railyard
           FROM ruby:#{ruby_version}
 
           RUN apt-get update -qq && apt-get install -y build-essential #{db_dependencies}
-          RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-            apt-get install -y nodejs
+
           RUN mkdir /app
           WORKDIR /app
           COPY Gemfile /app/Gemfile
