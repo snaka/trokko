@@ -3,7 +3,6 @@
 require 'fileutils'
 require 'thor'
 require 'railyard'
-require 'debug'
 
 module Railyard
   # Generate rails application
