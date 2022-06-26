@@ -106,6 +106,8 @@ module Railyard
     end
 
     def docker
+      return if skip_build
+
       say 'Building docker image...'
       inside name do
         return if system('docker compose build')
@@ -131,6 +133,10 @@ module Railyard
 
     def db
       options[:db]
+    end
+
+    def skip_build
+      options[:skip_build]
     end
 
     def uid
