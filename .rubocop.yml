@@ -10,6 +10,7 @@ AllCops:
   Exclude:
     - exe/**/*
     - vendor/**/*
+    - sandbox/**/*
 
 Layout/LineLength:
   Max: 120

@@ -9,7 +9,7 @@
 # Offense count: 1
 # Configuration parameters: CountComments, CountAsOne.
 Metrics/ClassLength:
-  Max: 107
+  Max: 111
 
 # Offense count: 1
 # Configuration parameters: CountComments, CountAsOne, ExcludedMethods, IgnoredMethods.
