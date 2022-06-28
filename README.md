@@ -1,22 +1,35 @@
 # Railyard
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/railyard`. To experiment with that code, run `bin/console` for an interactive prompt.
+Do you think the steps involved in building a Rails application development environment with Docker are too complicated?
 
-TODO: Delete this and the text above, and describe your gem
+The `railyard` command solves this for you.
+
+The `railyard` command prepares the specified `Gemfile` template.
+It will prepare a `Dockerfile` or `docker-compose.yml` depending on the specified DBMS.
+Then, it runs `rails new` and gets you ready to start development right away.
+It takes about a minute.
 
 ## Installation
 
-Install the gem and add to the application's Gemfile by executing:
-
-    $ bundle add railyard
-
-If bundler is not being used to manage dependencies, install the gem by executing:
+The installation process is as follows
 
     $ gem install railyard
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+Usage:
+  railyard generate [NAME]
+
+Options:
+  [--ruby-version=RUBY_VERSION]      # Ruby version (docker image tag)
+                                     # Default: latest
+  [--db=DB]
+                                     # Default: mysql
+                                     # Possible values: mysql, postgresql
+  [--skip-build], [--no-skip-build]  # Skip build
+  [--force]                          # Force to execute
+```
 
 ## Development
 
@@ -26,7 +39,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/railyard.
+Bug reports and pull requests are welcome on GitHub at https://github.com/snaka/railyard.
 
 ## License
 
