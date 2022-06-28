@@ -3,7 +3,7 @@
 require 'railyard/scaffolders/docker_compose'
 
 RSpec.describe Railyard::Scaffolders::DockerCompose do
-  describe '#generate' do
+  xdescribe '#generate' do
     subject { described_class.new(db:).generate }
 
     context 'when db is MySQL' do

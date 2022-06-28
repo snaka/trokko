@@ -3,7 +3,7 @@
 require 'railyard/scaffolders/gemfile'
 
 RSpec.describe Railyard::Scaffolders::Gemfile do
-  describe '#generate' do
+  xdescribe '#generate' do
     subject { described_class.new.generate }
 
     it { is_expected.not_to be_nil }

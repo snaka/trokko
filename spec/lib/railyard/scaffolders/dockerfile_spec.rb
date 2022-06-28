@@ -3,7 +3,7 @@
 require 'railyard/scaffolders/dockerfile'
 
 RSpec.describe Railyard::Scaffolders::Dockerfile do
-  describe '#generate' do
+  xdescribe '#generate' do
     subject { described_class.new(ruby_version:, db:).generate }
 
     let(:ruby_version) { 'latest' }

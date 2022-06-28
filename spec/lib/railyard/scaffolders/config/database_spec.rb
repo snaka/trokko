@@ -3,7 +3,7 @@
 require 'railyard/scaffolders/config/database'
 
 RSpec.describe Railyard::Scaffolders::Config::Database do
-  describe '#generate' do
+  xdescribe '#generate' do
     subject { described_class.new(db:).generate }
 
     context 'when db is MySQL' do
