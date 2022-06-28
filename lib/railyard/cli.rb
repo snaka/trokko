@@ -63,7 +63,9 @@ module Railyard
     def gemfile
       say 'Generating Gemfile...', :yellow
       Scaffolders::Gemfile.new(rails_version: '7.0.0', thor: self).generate
-      FileUtils.touch 'Gemfile.lock'
+      inside name do
+        FileUtils.touch 'Gemfile.lock'
+      end
     end
 
     def docker_compose
