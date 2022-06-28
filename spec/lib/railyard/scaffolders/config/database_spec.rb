@@ -13,7 +13,7 @@ RSpec.describe Railyard::Scaffolders::Config::Database do
     end
 
     context 'when db is PostgreSQL' do
-      let(:db) { 'postgres' }
+      let(:db) { 'postgresql' }
 
       it { is_expected.to include 'adapter: postgresql' }
     end

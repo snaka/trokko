@@ -22,7 +22,7 @@ RSpec.describe Railyard::Scaffolders::Dockerfile do
     end
 
     context 'when db is PostgreSQL' do
-      let(:db) { 'postgres' }
+      let(:db) { 'postgresql' }
 
       it { is_expected.to include 'FROM ruby:latest' }
       it { is_expected.to include 'build-essential' }

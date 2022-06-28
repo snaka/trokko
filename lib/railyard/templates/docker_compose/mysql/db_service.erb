@@ -1,0 +1,8 @@
+    image: mysql:latest
+    cap_add:
+      - SYS_NICE
+    environment:
+      MYSQL_ROOT_PASSWORD: &db_password secret
+      TZ: Asia/Tokyo
+    volumes:
+      - database:/var/lib/mysql
