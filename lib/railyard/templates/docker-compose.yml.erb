@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+<%= db_service_config %>
+  app:
+    build: .
+    volumes:
+      - .:/app
+      - bundle:/usr/local/bundle
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+<% app_service_config %>
+volumes:
+  database:
+    driver: local
+  bundle:
+    driver: local

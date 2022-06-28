@@ -4,33 +4,21 @@ module Railyard
   module Scaffolders
     # Generating Dockerfile according to configurations
     class Dockerfile
-      attr_reader :ruby_version, :db
+      attr_reader :ruby_version, :db, :thor
 
-      def initialize(ruby_version:, db:)
+      def initialize(ruby_version:, db:, thor:)
         @ruby_version = ruby_version
         @db = db
+        @thor = thor
       end
 
       def generate
-        <<~DOCKERFILE
-          FROM ruby:#{ruby_version}
-
-          RUN apt-get update -qq && apt-get install -y build-essential #{db_dependencies}
-
-          RUN mkdir /app
-          WORKDIR /app
-          COPY Gemfile /app/Gemfile
-          COPY Gemfile.lock /app/Gemfile.lock
-          RUN gem update bundler && bundle install
-          COPY . /app
-
-          COPY entrypoint.sh /usr/bin/
-          RUN chmod +x /usr/bin/entrypoint.sh
-          ENTRYPOINT ["entrypoint.sh"]
-          EXPOSE 3000
-
-          CMD ["bundle", "exec", "rails", "server", "--binding", "0.0.0.0"]
-        DOCKERFILE
+        thor.template(
+          'templates/Dockerfile.erb',
+          "#{thor.name}/Dockerfile",
+          force: true,
+          context: binding
+        )
       end
 
       private
@@ -39,8 +27,10 @@ module Railyard
         case db
         when 'mysql'
           ''
-        when 'postgres'
+        when 'postgresql'
           'libpq-dev'
+        else
+          raise "Unknown database: #{db}"
         end
       end
     end

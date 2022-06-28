@@ -14,9 +14,13 @@ module Railyard
     argument :name, type: :string, required: false
 
     class_option :ruby_version, default: 'latest', desc: 'Ruby version (docker image tag)'
-    class_option :db, default: 'mysql', enum: %w[mysql postgres]
+    class_option :db, default: 'mysql', enum: %w[mysql postgresql]
     class_option :skip_build, type: :boolean, default: false, desc: 'Skip build'
     class_option :force, type: :boolean, default: false, desc: 'Force to execute'
+
+    def self.source_root
+      File.dirname(__FILE__)
+    end
 
     def ask_project_name
       @name = ask('Project name:') unless name
@@ -39,7 +43,7 @@ module Railyard
     end
 
     def check_directory
-      say 'check directory...'
+      say 'check directory...', :yellow
       say File.exist?(name)
       return unless File.exist?(name)
       FileUtils.remove_dir(name) and return if force
@@ -51,32 +55,24 @@ module Railyard
     end
 
     def dockerfile
-      say 'Generating Dockerfile...'
-      inside name do
-        File.write(
-          'Dockerfile',
-          Scaffolders::Dockerfile.new(ruby_version:, db:).generate
-        )
-        File.write 'entrypoint.sh', Scaffolders::Entrypoint.new.generate
-      end
+      say 'Generating Dockerfile...', :yellow
+      Scaffolders::Dockerfile.new(ruby_version:, db:, thor: self).generate
+      Scaffolders::Entrypoint.new(thor: self).generate
     end
 
     def gemfile
-      say 'Generating Gemfile...'
-      inside name do
-        File.write 'Gemfile', Scaffolders::Gemfile.new.generate
-        FileUtils.touch 'Gemfile.lock'
-      end
+      say 'Generating Gemfile...', :yellow
+      Scaffolders::Gemfile.new(rails_version: '7.0.0', thor: self).generate
+      FileUtils.touch 'Gemfile.lock'
     end
 
     def docker_compose
-      inside name do
-        File.write 'docker-compose.yml', Scaffolders::DockerCompose.new(db:).generate
-      end
+      say 'Generating docker-compose.yml...', :yellow
+      Scaffolders::DockerCompose.new(db:, thor: self).generate
     end
 
     def rails_new
-      say 'Generating rails application...'
+      say 'Generating rails application...', :yellow
       inside name do
         unless system(
           "docker compose run --no-deps --entrypoint '' --rm app" \
@@ -99,16 +95,14 @@ module Railyard
     end
 
     def post_rails_new
-      say 'Generating database.yml...'
-      inside name do
-        File.write 'config/database.yml', Scaffolders::Config::Database.new(db:).generate
-      end
+      say 'Generating database.yml...', :yellow
+      Scaffolders::Config::Database.new(db:, thor: self).generate
     end
 
     def docker
       return if skip_build
 
-      say 'Building docker image...'
+      say 'Building docker image...', :yellow
       inside name do
         return if system('docker compose build')
 

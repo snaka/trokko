@@ -1,0 +1,17 @@
+FROM ruby:<%= ruby_version %>
+
+RUN apt-get update -qq && apt-get install -y build-essential <%= db_dependencies %>
+
+RUN mkdir /app
+WORKDIR /app
+COPY Gemfile /app/Gemfile
+COPY Gemfile.lock /app/Gemfile.lock
+RUN gem update bundler && bundle install
+COPY . /app
+
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
+EXPOSE 3000
+
+CMD ["bundle", "exec", "rails", "server", "--binding", "0.0.0.0"]

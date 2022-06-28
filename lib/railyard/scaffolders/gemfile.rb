@@ -4,20 +4,28 @@ module Railyard
   module Scaffolders
     # Generationg Gemfile according to configurations
     class Gemfile
-      def initialize(config = {})
-        @config = config
-      end
+      attr_reader :rails_version, :thor
 
-      def rails_version
-        @config[:rails_version] || '7.0.0'
+      def initialize(rails_version:, thor:)
+        @rails_version = rails_version
+        @thor = thor
       end
 
       def generate
-        <<~GEMFILE
-          source 'https://rubygems.org'
-          gem 'rails', '~>#{rails_version}'
-        GEMFILE
+        thor.template(
+          'templates/Gemfile.erb',
+          "#{thor.name}/Gemfile",
+          force: true,
+          context: binding
+        )
       end
+
+      # def generate
+      #   <<~GEMFILE
+      #     source 'https://rubygems.org'
+      #     gem 'rails', '~>#{rails_version}'
+      #   GEMFILE
+      # end
     end
   end
 end
