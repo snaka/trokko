@@ -35,6 +35,10 @@ module Railyard
       def source_root
         thor.class.source_root
       end
+
+      def project_name
+        thor.name
+      end
     end
   end
 end
