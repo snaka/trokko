@@ -1,4 +1,6 @@
-![header image (railyard)](docs/images/cover-image.png?raw=true "Photo by Maxim Melnikov on Unsplash")
+<p align="center">
+  <img src="docs/images/cover-image.png?raw=true">
+</p>
 
 # Railyard
 
