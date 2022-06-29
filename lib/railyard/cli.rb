@@ -14,7 +14,7 @@ module Railyard
     argument :name, type: :string, required: false
 
     class_option :ruby_version, default: 'latest', desc: 'Ruby version (docker image tag)'
-    class_option :db, default: 'mysql', enum: %w[mysql postgresql]
+    class_option :db, default: 'mysql', enum: %w[mysql postgresql], desc: 'DBMS to use'
     class_option :skip_build, type: :boolean, default: false, desc: 'Skip build'
     class_option :force, type: :boolean, default: false, desc: 'Force to execute'
 
@@ -152,5 +152,11 @@ module Railyard
 
     register(Generate, 'generate', 'generate [NAME]', 'Generate a Rails application with the specified name')
     tasks['generate'].options = Generate.class_options
+
+    desc 'version', 'Show version'
+    def version
+      say "railyard #{Railyard::VERSION}"
+    end
+    map %w[-v --version] => :version
   end
 end
