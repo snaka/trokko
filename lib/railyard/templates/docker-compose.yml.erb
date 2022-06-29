@@ -15,5 +15,9 @@ services:
 volumes:
   database:
     driver: local
+    labels:
+      info.snaka.railyard.project: "<%= project_name %>"
   bundle:
     driver: local
+    labels:
+      info.snaka.railyard.project: "<%= project_name %>"
