@@ -1,3 +1,5 @@
+![header image (railyard)](docs/images/cover-image.png?raw=true "Photo by Maxim Melnikov on Unsplash")
+
 # Railyard
 
 Do you think the steps involved in building a Rails application development environment with Docker are too complicated?
