@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'rspec/temp_dir'
 require 'railyard'
 
 RSpec.configure do |config|
