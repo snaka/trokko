@@ -1,21 +1,24 @@
 # frozen_string_literal: true
 
+require 'thor'
 require 'railyard/scaffolders/gemfile'
 
 RSpec.describe Railyard::Scaffolders::Gemfile do
-  xdescribe '#generate' do
-    subject { described_class.new.generate }
+  describe '#generate' do
+    subject { described_class.new(rails_version:, thor:).generate }
 
-    it { is_expected.not_to be_nil }
+    include_context 'within temp dir'
 
-    context 'when Rails version is specified' do
-      subject { described_class.new(rails_version: '6.1.0').generate }
+    let(:rails_version) { '7.0.0' }
+    let(:thor) { thor_dummy }
 
-      it { is_expected.to include "gem 'rails', '~>6.1.0'" }
-    end
+    it { is_expected.to eq 'dummy/Gemfile' }
+    it { is_expected.to be_a_file_with "gem 'rails', '~>7.0.0'" }
 
-    context 'when Rails version is not specified' do
-      it { is_expected.to include "gem 'rails', '~>7.0.0'" }
+    context 'when other Rails version is specified' do
+      let(:rails_version) { '6.1.0' }
+
+      it { is_expected.to be_a_file_with "gem 'rails', '~>6.1.0'" }
     end
   end
 end

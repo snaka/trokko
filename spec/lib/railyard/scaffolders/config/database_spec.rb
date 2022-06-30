@@ -3,19 +3,21 @@
 require 'railyard/scaffolders/config/database'
 
 RSpec.describe Railyard::Scaffolders::Config::Database do
-  xdescribe '#generate' do
-    subject { described_class.new(db:).generate }
+  describe '#generate' do
+    subject { described_class.new(db:, thor:).generate }
 
-    context 'when db is MySQL' do
-      let(:db) { 'mysql' }
+    include_context 'within temp dir'
 
-      it { is_expected.to include 'adapter: mysql2' }
-    end
+    let(:db) { 'mysql' }
+    let(:thor) { thor_dummy }
+
+    it { is_expected.to eq 'dummy/config/database.yml' }
+    it { is_expected.to be_a_file_with 'adapter: mysql2' }
 
     context 'when db is PostgreSQL' do
       let(:db) { 'postgresql' }
 
-      it { is_expected.to include 'adapter: postgresql' }
+      it { is_expected.to be_a_file_with 'adapter: postgresql' }
     end
   end
 end
