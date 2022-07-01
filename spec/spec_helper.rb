@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rspec/temp_dir'
-require 'railyard'
+require 'trokko'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

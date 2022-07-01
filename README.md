@@ -2,13 +2,13 @@
   <img src="docs/images/cover-image.png?raw=true">
 </p>
 
-# Railyard
+# Trokko
 
 Do you think the steps involved in building a Rails application development environment with Docker are too complicated?
 
-The `railyard` command solves this for you.
+The `trokko` command solves this for you.
 
-The `railyard` command prepares the specified `Gemfile` template.
+The `trokko` command prepares the specified `Gemfile` template.
 It will prepare a `Dockerfile` or `docker-compose.yml` depending on the specified DBMS.
 Then, it runs `rails new` and gets you ready to start development right away.
 It takes about a minute.
@@ -17,13 +17,13 @@ It takes about a minute.
 
 The installation process is as follows
 
-    $ gem install railyard
+    $ gem install trokko
 
 ## Usage
 
 ```
 Usage:
-  railyard generate [NAME]
+  trokko generate [NAME]
 
 Options:
   [--ruby-version=RUBY_VERSION]      # Ruby version (docker image tag)
@@ -43,7 +43,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/snaka/railyard.
+Bug reports and pull requests are welcome on GitHub at https://github.com/snaka/trokko.
 
 ## License
 

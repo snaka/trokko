@@ -1,4 +1,0 @@
-#!/usr/bin/env ruby
-require 'railyard/cli'
-
-Railyard::CLI.start(ARGV)

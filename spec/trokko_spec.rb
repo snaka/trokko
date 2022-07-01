@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe Railyard do
+RSpec.describe Trokko do
   it 'has a version number' do
-    expect(Railyard::VERSION).not_to be_nil
+    expect(Trokko::VERSION).not_to be_nil
   end
 end

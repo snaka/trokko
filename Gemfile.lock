@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    railyard (0.1.0)
+    trokko (0.1.0)
       thor (~> 1.2.0)
 
 GEM
@@ -63,7 +63,7 @@ PLATFORMS
 
 DEPENDENCIES
   debug (~> 1.0)
-  railyard!
+  trokko!
   rake (~> 13.0)
   rspec (~> 3.0)
   rspec-temp_dir (~> 1.1)

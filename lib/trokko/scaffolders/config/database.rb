@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Railyard
+module Trokko
   module Scaffolders
     module Config
       # Generating config/database.yml file according to configurations

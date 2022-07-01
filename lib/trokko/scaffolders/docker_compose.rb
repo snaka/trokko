@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Railyard
+module Trokko
   module Scaffolders
     # Generating docker-compose file according to configuration
     class DockerCompose

@@ -2,9 +2,9 @@
 
 require 'fileutils'
 require 'thor'
-require 'railyard'
+require 'trokko'
 
-module Railyard
+module Trokko
   # Generate rails application
   class Generate < Thor::Group
     include Thor::Actions
@@ -144,7 +144,7 @@ module Railyard
     end
   end
 
-  # CLI for Railyard
+  # CLI for Trokko
   class CLI < Thor
     def self.exit_on_failure?
       true
@@ -155,7 +155,7 @@ module Railyard
 
     desc 'version', 'Show version'
     def version
-      say "railyard #{Railyard::VERSION}"
+      say "trokko #{Trokko::VERSION}"
     end
     map %w[-v --version] => :version
   end
