@@ -5,7 +5,7 @@ require 'trokko/scaffolders/gemfile'
 
 RSpec.describe Trokko::Scaffolders::Gemfile do
   describe '#generate' do
-    subject { described_class.new(rails_version:, thor:).generate }
+    subject { described_class.new(rails_version: rails_version, thor: thor).generate }
 
     include_context 'within temp dir'
 

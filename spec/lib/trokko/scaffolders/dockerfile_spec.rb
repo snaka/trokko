@@ -5,7 +5,7 @@ require 'trokko/scaffolders/dockerfile'
 
 RSpec.describe Trokko::Scaffolders::Dockerfile do
   describe '#generate' do
-    subject { described_class.new(ruby_version:, db:, thor:).generate }
+    subject { described_class.new(ruby_version: ruby_version, db: db, thor: thor).generate }
 
     include_context 'within temp dir'
 

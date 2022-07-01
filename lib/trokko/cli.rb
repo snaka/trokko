@@ -56,7 +56,7 @@ module Trokko
 
     def dockerfile
       say 'Generating Dockerfile...', :yellow
-      Scaffolders::Dockerfile.new(ruby_version:, db:, thor: self).generate
+      Scaffolders::Dockerfile.new(ruby_version: ruby_version, db: db, thor: self).generate
       Scaffolders::Entrypoint.new(thor: self).generate
     end
 
@@ -70,7 +70,7 @@ module Trokko
 
     def docker_compose
       say 'Generating docker-compose.yml...', :yellow
-      Scaffolders::DockerCompose.new(db:, thor: self).generate
+      Scaffolders::DockerCompose.new(db: db, thor: self).generate
     end
 
     def rails_new
@@ -98,7 +98,7 @@ module Trokko
 
     def post_rails_new
       say 'Generating database.yml...', :yellow
-      Scaffolders::Config::Database.new(db:, thor: self).generate
+      Scaffolders::Config::Database.new(db: db, thor: self).generate
     end
 
     def docker

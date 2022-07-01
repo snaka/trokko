@@ -4,7 +4,7 @@ require 'trokko/scaffolders/entrypoint'
 
 RSpec.describe Trokko::Scaffolders::Entrypoint do
   describe '#generate' do
-    subject { described_class.new(thor:).generate }
+    subject { described_class.new(thor: thor).generate }
 
     include_context 'within temp dir'
 

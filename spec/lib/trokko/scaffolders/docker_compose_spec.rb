@@ -4,7 +4,7 @@ require 'trokko/scaffolders/docker_compose'
 
 RSpec.describe Trokko::Scaffolders::DockerCompose do
   describe '#generate' do
-    subject { described_class.new(db:, thor:).generate }
+    subject { described_class.new(db: db, thor: thor).generate }
 
     include_context 'within temp dir'
 
