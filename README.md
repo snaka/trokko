@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/images/cover-image.png?raw=true">
+  <img src="docs/images/cover-image.png?raw=true" width="600px">
 </p>
 
 # Trokko
