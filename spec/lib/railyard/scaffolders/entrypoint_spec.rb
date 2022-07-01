@@ -3,9 +3,14 @@
 require 'railyard/scaffolders/entrypoint'
 
 RSpec.describe Railyard::Scaffolders::Entrypoint do
-  xdescribe '#generate' do
-    subject { described_class.new.generate }
+  describe '#generate' do
+    subject { described_class.new(thor:).generate }
 
-    it { is_expected.not_to be_nil }
+    include_context 'within temp dir'
+
+    let(:thor) { thor_dummy }
+
+    it { is_expected.to eq 'dummy/entrypoint.sh' }
+    it { is_expected.to be_a_file_with '#!/usr/bin/env bash' }
   end
 end

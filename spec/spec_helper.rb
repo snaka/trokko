@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'rspec/temp_dir'
 require 'railyard'
 
 RSpec.configure do |config|
@@ -13,3 +14,5 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+Dir[File.join(__dir__, 'support/**/*.rb')].each { |f| require f }

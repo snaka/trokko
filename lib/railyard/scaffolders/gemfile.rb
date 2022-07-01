@@ -19,13 +19,6 @@ module Railyard
           context: binding
         )
       end
-
-      # def generate
-      #   <<~GEMFILE
-      #     source 'https://rubygems.org'
-      #     gem 'rails', '~>#{rails_version}'
-      #   GEMFILE
-      # end
     end
   end
 end
