@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require 'thor'
-require 'railyard/scaffolders/gemfile'
+require 'trokko/scaffolders/gemfile'
 
-RSpec.describe Railyard::Scaffolders::Gemfile do
+RSpec.describe Trokko::Scaffolders::Gemfile do
   describe '#generate' do
     subject { described_class.new(rails_version:, thor:).generate }
 

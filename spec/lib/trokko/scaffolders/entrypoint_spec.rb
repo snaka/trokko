@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'railyard/scaffolders/entrypoint'
+require 'trokko/scaffolders/entrypoint'
 
-RSpec.describe Railyard::Scaffolders::Entrypoint do
+RSpec.describe Trokko::Scaffolders::Entrypoint do
   describe '#generate' do
     subject { described_class.new(thor:).generate }
 

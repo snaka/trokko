@@ -13,5 +13,5 @@ task default: %i[spec rubocop]
 
 desc 'Execute sandbox test'
 task :sandbox do
-  system 'bundle exec exe/railyard generate sandbox --force'
+  system 'bundle exec exe/trokko generate sandbox --force'
 end

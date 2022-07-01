@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require 'thor'
-require 'railyard/scaffolders/dockerfile'
+require 'trokko/scaffolders/dockerfile'
 
-RSpec.describe Railyard::Scaffolders::Dockerfile do
+RSpec.describe Trokko::Scaffolders::Dockerfile do
   describe '#generate' do
     subject { described_class.new(ruby_version:, db:, thor:).generate }
 

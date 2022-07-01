@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Railyard
+module Trokko
   module Scaffolders
     # Generationg Gemfile according to configurations
     class Gemfile

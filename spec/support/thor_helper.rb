@@ -8,7 +8,7 @@ module ThorHelper
       include Thor::Actions
 
       def self.source_root
-        File.expand_path('../../lib/railyard', __dir__)
+        File.expand_path('../../lib/trokko', __dir__)
       end
 
       no_commands do

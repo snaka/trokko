@@ -1,21 +1,21 @@
 # frozen_string_literal: true
 
-require_relative 'lib/railyard/version'
+require_relative 'lib/trokko/version'
 
 Gem::Specification.new do |spec|
-  spec.name = 'railyard'
-  spec.version = Railyard::VERSION
+  spec.name = 'trokko'
+  spec.version = Trokko::VERSION
   spec.authors = ['S.Nakamatsu']
   spec.email = ['19329+snaka@users.noreply.github.com']
 
   spec.summary = 'Set up a Rails development environment with Docker in 1 minute'
   spec.description = <<~DESCRIPTION
-    The `railyard` command prepares the specified `Gemfile` template.
+    The `trokko` command prepares the specified `Gemfile` template.
     It will prepare a `Dockerfile` or `docker-compose.yml` depending on the specified DBMS.
     Then, it runs `rails new` and gets you ready to start development right away.
     It takes about a minute.
   DESCRIPTION
-  spec.homepage = 'https://github.com/snaka/railyard'
+  spec.homepage = 'https://github.com/snaka/trokko'
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 3.1.0'
 

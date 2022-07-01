@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require 'trokko/cli'
+
+Trokko::CLI.start(ARGV)
