@@ -1,5 +1,14 @@
 # Changelog
 
+## [v0.2.1](https://github.com/snaka/trokko/tree/v0.2.1) (2022-07-04)
+
+[Full Changelog](https://github.com/snaka/trokko/compare/v0.2.0...v0.2.1)
+
+**Merged pull requests:**
+
+- Bump version to v0.2.1 [\#24](https://github.com/snaka/trokko/pull/24) ([snaka](https://github.com/snaka))
+- Use `next` for early return from `inside` block [\#22](https://github.com/snaka/trokko/pull/22) ([snaka](https://github.com/snaka))
+
 ## [v0.2.0](https://github.com/snaka/trokko/tree/v0.2.0) (2022-07-01)
 
 [Full Changelog](https://github.com/snaka/trokko/compare/v0.1.0...v0.2.0)
