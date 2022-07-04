@@ -84,7 +84,7 @@ module Trokko
           raise Thor::InvocationError, '[ERROR] Failed to generate rails application'
         end
 
-        return if File.stat('config').uid == uid
+        next if File.stat('config').uid == uid
 
         unless system(
           "docker compose run --no-deps --entrypoint '' --rm app" \
@@ -106,7 +106,7 @@ module Trokko
 
       say 'Building docker image...', :yellow
       inside name do
-        return if system('docker compose build')
+        next if system('docker compose build')
 
         say 'Stop executing task', :red
         raise Thor::InvocationError, '[ERROR] Failed to build docker image'
