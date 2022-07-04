@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    trokko (0.2.0)
+    trokko (0.2.1)
       thor (~> 1.2.0)
 
 GEM
