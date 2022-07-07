@@ -19,6 +19,23 @@ module ThorHelper
     end
     thor_class.new
   end
+
+  # Borrowed from:
+  #   https://github.com/rails/thor/blob/main/spec/helper.rb
+  # rubocop:disable Security/Eval
+  def capture(stream)
+    begin
+      stream = stream.to_s
+      eval "$#{stream} = StringIO.new # $stdout = StringIO.new", nil, __FILE__, __LINE__
+      yield
+      result = eval("$#{stream} # $stdout", nil, __FILE__, __LINE__).string
+    ensure
+      eval "$#{stream} = #{stream.upcase} # $stdout = STDOUT", nil, __FILE__, __LINE__
+    end
+
+    result
+  end
+  # rubocop:enable Security/Eval
 end
 
 RSpec.configure do |config|
